@@ -39,12 +39,12 @@
 
     <div class="row-fluid">
       <% @heroes.each do |hero| %>
-        <div class="span4 hero" id="hero-<%= hero.id %>">
+        <a href="/meet/<%= hero.name %>" class="span4 hero" id="hero-<%= hero.id %>">
           <img src=<%= hero.original_profile_image_url %> class="img-rounded"/>
           <p><h4><%= hero.name %></h4></p>
           <p><h5>@<%= hero.screen_name %></h5></p>
           <p><h5><%= hero.highest_bid %></h5></p>
-        </div>
+        </a>
       <% end %>
     </div>
   </div>
