@@ -37,26 +37,35 @@ task :get_user_info => :environment do |t, args|
 
     begin
       users = Twitter.users(user_ids)
+      users.each do |user|
+        puts user.name
+        data = user.to_hash.to_json
+        db_user = TwitterVerifiedUser.find_by_twitter_id(user.id)
+
+        #store all data for potential future use
+        db_user.data = data
+
+        #set some known valuable fields
+        db_user.name = user.name
+        db_user.screen_name = user.screen_name
+        db_user.profile_image_url = user.profile_image_url
+        db_user.followers_count = user.followers_count
+        db_user.save!
+        rows_updated += 1
+      end
     rescue Twitter::Error::TooManyRequests => error
       puts "#{Time.now}: sleeping until #{error.rate_limit.reset_at} (#{error.rate_limit.reset_in} seconds)"
       sleep error.rate_limit.reset_in
       retry
-    end
-    users.each do |user|
-      puts user.name
-      data = user.to_hash.to_json
-      db_user = TwitterVerifiedUser.find_by_twitter_id(user.id)
-
-      #store all data for potential future use
-      db_user.data = data
-
-      #set some known valuable fields
-      db_user.name = user.name
-      db_user.screen_name = user.screen_name
-      db_user.profile_image_url = user.profile_image_url
-      db_user.followers_count = user.followers_count
-      db_user.save!
-      rows_updated += 1
+    rescue Twitter::Error::NotFound => e
+      if batch.to_i == 1
+        t = TwitterVerifiedUser.find_by_twitter_id(user_ids.first)
+        puts "deleting invalid user #{t.twitter_id}"
+        t.destroy
+      else
+        puts "Invalid user found: retry with batch=1 to remove"
+        exit
+      end
     end
   end while results.count > 0 and rows_updated < limit.to_i
   puts "updated #{rows_updated} rows"
