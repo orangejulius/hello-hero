@@ -66,8 +66,8 @@ end
 desc "show how many rows, and rows with full user data, are in the DB"
 task :status => :environment do |t|
   total_rows = TwitterVerifiedUser.count
-  partial_rows = TwitterVerifiedUser.where("data != ''").count
+  full_rows = TwitterVerifiedUser.where("data != ''").count
 	puts "total rows:\t#{total_rows}"
-	puts "partial rows:\t#{partial_rows}"
-	puts "full rows:\t#{total_rows - partial_rows}"
+	puts "partial rows:\t#{total_rows - full_rows}"
+	puts "full rows:\t#{full_rows}"
 end
