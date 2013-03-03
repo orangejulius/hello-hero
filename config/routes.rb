@@ -1,13 +1,10 @@
 HelloHero::Application.routes.draw do
   get "pages/index"
-
   get "pages/about"
-
   get "pages/terms"
-
   get "pages/privacy"
-
   get "pages/contact"
+  get "pages/faq"
 
   get "meet/" => 'heroes#index'
   get "meet/:name" => 'heroes#leaderboard'

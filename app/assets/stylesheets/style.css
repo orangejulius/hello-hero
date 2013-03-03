@@ -20,3 +20,14 @@
   color: #fff; 
   text-shadow: 0 1px 0 #000;
 }
+
+#footer {
+  margin-top: 45px; 
+}
+
+#footer > .nav-tabs > li, #footer > .nav-pills > li {
+  float:none;
+  display:inline-block;
+  *display:inline; /* ie7 fix */
+  zoom:1; /* hasLayout ie7 trigger */
+}
