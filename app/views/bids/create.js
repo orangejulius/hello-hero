@@ -1,0 +1,1 @@
+$('#bids').prepend( "<%=j render :partial => '/bids/bid', :locals => {:bid => @bid} %>");

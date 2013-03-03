@@ -27,19 +27,24 @@
           <th>Date Submitted</th>
         </tr>
       </thead>
-      <tbody>
-        <% @hero.bids.each do |bid| %>
-          <tr>
-            <td><%= bid.user.name %></td>
-            <td><%= number_to_currency(bid.amount) %></td>
-            <td><%= bid.updated_at %></td>
-          </tr>
-        <% end %>
+      <tbody id="bids">
+        <%= render :partial => 'bids/bid', :collection => @bids %>
       </tbody>
     </table>
     <% end %>
 
-    <a class="btn btn-primary" href="">Do you want to meet <%= @hero.name %>?</a>
+    <p>Do you want to meet <%= @hero.name %>?</p>
+    <% if current_user %>
+      <%= form_for(@bid, :remote => true, :controller => :bids, :action => :create ) do |f| %>
+        <%= f.label :amount %>
+        <%= f.text_field :amount %>
+        <%= f.hidden_field :twitter_verified_user_id, :value => @hero.id %> 
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.submit %>
+      <% end %>
+    <% else %>
+      <a href="/sign_in">Please sign_in to bid</a>
+    <% end %>
   </div>
 </div>
 

@@ -5,6 +5,8 @@ class HeroesController < ApplicationController
 
   def leaderboard
     @hero = TwitterVerifiedUser.find_by_name(params[:name])
+    @bids = @hero.bids
+    @bid = Bid.new
     unless @hero
       flash[:error] = "No one named #{params[:name]} was found"
       redirect_to :action => :index
