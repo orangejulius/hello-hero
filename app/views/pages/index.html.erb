@@ -1,60 +1,59 @@
 <div class="container-fluid">
-	<div class="row-fluid" id="marquee">
-		<div class="span12">
-			<h1>Hello Hero</h1>
-			<h2>meet your hero</h2>
+  <div class="row-fluid" id="marquee">
+    <div class="span12">
+      <h1>Hello Hero</h1>
+      <h2>meet your hero</h2>
       <div>
         <input type="text" id="search"/>
         <script type="text/javascript">
           $(function(){
-            $('#search').typeahead({
-               name: 'twitter_verified_users',
-               prefetch: 'http://localhost:3000/twitter.json',
-               template: '{{name}} @{{screen_name}}',
-               engine: Hogan,
-               limit: 10
-            });
-          });
+              $('#search').typeahead({
+                name: 'twitter_verified_users',
+                prefetch: 'http://localhost:3000/twitter.json',
+                template: '{{name}} @{{screen_name}}',
+                engine: Hogan,
+                limit: 10
+                });
+              });
         </script>
+      </div>
+    </div>
+  </div>
 
-			</div>
-		</div>
-	</div>
+  <div class="row-fluid">
+    <% @heroes.each do |hero| %>
+      <div class="span4 hero" id="hero-<%= hero.id %>">
+        <%= hero.name %>
+        <img src=<%= hero.profile_image_url %> class="img-rounded"/>
+        <%= hero.screen_name %>
+        <%= hero.highest_bid %>
+      </div>
+    <% end %>
+  </div>
 
-	<div class="row-fluid">
-		<% @heroes.each do |hero| %>
-			<div class="span4 hero" id="hero-<%= hero.id %>">
-				<%= hero.name %>
-				<img src=<%= hero.profile_image_url %> class="img-rounded"/>
-				<%= hero.screen_name %>
-				<%= hero.highest_bid %>
-			</div>
-		<% end %>
-	</div>
+  <div class="row-fluid" id="how-it-works">
+    <h2>How it works</h2>
+    <p> 
+    Step 1:
+    Find your hero.
+    </p>
+    <p>
+    Step 2:
+    Place your bid to meet your hero in person for one hour.
+    </p>
+    <p>
+    Step 3:
+    Stay on top. Remember to keep outbidding your less worthy rivals.
+    </p>
+    <p>
+    Step 4:
+    Once you're the highest bidder and your hero accepts your bid, we'll set you two up for your meeting.
+    </p>
 
-	<div class="row-fluid" id="how-it-works">
-		<h2>How it works</h2>
-		<p> 
-			Step 1:
-			Find your hero.
-		</p>
-		<p>
-			Step 2:
-			Place your bid to meet your hero in person for one hour.
-		</p>
-		<p>
-			Step 3:
-			Stay on top. Remember to keep outbidding your less worthy rivals.
-		</p>
-		<p>
-			Step 4:
-			Once you're the highest bidder and your hero accepts your bid, we'll set you two up for your meeting.
-		</p>
-
-	</div>
- </div>
+  </div>
+</div>
 <footer>
-	<ul>
-		<li><a>Claim your account</a></li>
-	</ul>
+<ul>
+  <li><a>Claim your account</a></li>
+</ul>
 </footer>
