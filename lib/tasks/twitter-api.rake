@@ -26,10 +26,13 @@ end
 
 desc "find user ids in db and get information for them (if it isn't already there)"
 task :get_user_info => :environment do |t, args|
-  limit = ENV['limit'] || 100
+  batch = ENV['batch'] || 100
+  limit = ENV['limit'] || 10000000
+
+  rows_updated = 0
 
   begin
-    results = TwitterVerifiedUser.where(data:nil).limit(limit)
+    results = TwitterVerifiedUser.where(data:nil).limit(batch)
     user_ids = results.map { |result| result[:twitter_id] }
 
     begin
@@ -53,8 +56,10 @@ task :get_user_info => :environment do |t, args|
       db_user.profile_image_url = user.profile_image_url
       db_user.followers_count = user.followers_count
       db_user.save!
+      rows_updated += 1
     end
-  end while results.count > 0
+  end while results.count > 0 and rows_updated < limit.to_i
+  puts "updated #{rows_updated} rows"
 end
 
 
