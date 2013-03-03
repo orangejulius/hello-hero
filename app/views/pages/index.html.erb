@@ -1,15 +1,15 @@
-<div class="container-fluid">
-  <div class="row-fluid" id="marquee">
+<div class="container">
+  <div class="row" id="marquee">
     <div class="span12">
       <h1>Hello Hero</h1>
       <h2>meet your hero</h2>
       <div>
-        <input type="text" id="search" placeholder="Who do you want to meet?"  />
+        <input type="text" id="search_bar" placeholder="Who do you want to meet?" class="span6">
         <script type="text/javascript">
-          $('#search').focusin(function() { this.placeholder = '' });
-          $('#search').focusout(function() { this.placeholder = 'Who do you want to meet?' });
+          $('#search_bar').focusin(function() { this.placeholder = '' });
+          $('#search_bar').focusout(function() { this.placeholder = 'Who do you want to meet?' });
           $(function(){
-              $('#search').typeahead({
+              $('#search_bar').typeahead({
                 name: 'twitter_verified_users',
                 prefetch: 'http://localhost:3000/twitter.json',
                 template: '{{value}} @{{screen_name}}',
