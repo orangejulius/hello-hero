@@ -9,6 +9,9 @@ HelloHero::Application.routes.draw do
 
   get "pages/contact"
 
+  get "meet/" => 'heroes#index'
+  get "meet/:name" => 'heroes#leaderboard'
+
   ActiveAdmin.routes(self)
 
   devise_for :users
