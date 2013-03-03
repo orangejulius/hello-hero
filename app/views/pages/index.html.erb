@@ -1,101 +1,85 @@
 <div class="container">
-  <div class="row" id="marquee">
-    <div class="span12">
-      <h1>Meet your Hero!</h1><br />
-      <div>
-        <input type="text" id="search_bar" placeholder="Who do you want to meet?" class="span6">
-        <script type="text/javascript">
-          $('#search_bar').focusin(function() { this.placeholder = '' });
-          $('#search_bar').focusout(function() { this.placeholder = 'Who do you want to meet?' });
-          $("#search_bar").keyup(function (e) {
-            if (e.keyCode == 13) {
-              window.location = '/meet/'+this.value;
-            }
-          });
+  <div id="marquee" class="row">
+    <h1>Meet your Hero</h1>
 
-          $(function(){
-            $('#search_bar').typeahead({
-              name: 'twitter_verified_users',
-              prefetch: '/twitter.json',
-              template: [
-              '<div class="row">',
-              '<div class="span1">',
-              '<img src="{{img}}"/>',
-              '</div>',
-              '<div class="span5">',
-              '<p class="screen_name">@{{screen_name}}</p>',
-              '<p class="real_name">{{value}}</p>',
-              '<p class="description">{{description}}</p>',
-              '</div>',
-              '</div>'
-              ].join(''),
-              engine: Hogan,
-              limit: 5
-            });
-          });
-        </script>
-      </div>
-    </div>
+    <p class="lead">
+      Ever wanted to meet your favorite celebrity? Now you can! 
+    </p>
 
-    <div class="row-fluid">
-      <% @heroes.each do |hero| %>
-        <a href="/meet/<%= hero.name %>" class="span4 hero" id="hero-<%= hero.id %>">
-          <img src=<%= hero.original_profile_image_url %> class="img-rounded"/>
-          <p><h4><%= hero.name %></h4></p>
-          <p><h5>@<%= hero.screen_name %></h5></p>
-          <p><h5><%= hero.highest_bid %></h5></p>
-        </a>
-      <% end %>
-    </div>
+    <input type="text" id="search_bar" placeholder="Who do you want to meet?" class="span6">
+
+    <script type="text/javascript">
+      $('#search_bar').focusin(function() { this.placeholder = '' });
+      $('#search_bar').focusout(function() { this.placeholder = 'Who do you want to meet?' });
+      $("#search_bar").keyup(function (e) {
+        if (e.keyCode == 13) {
+          window.location = '/meet/'+this.value;
+        }
+      });
+
+      $(function(){
+        $('#search_bar').typeahead({
+          name: 'twitter_verified_users',
+          prefetch: '/twitter.json',
+          template: [
+          '<div class="row">',
+          '<div class="span1">',
+          '<img src="{{img}}"/>',
+          '</div>',
+          '<div class="span5">',
+          '<p class="screen_name">@{{screen_name}}</p>',
+          '<p class="real_name">{{value}}</p>',
+          '<p class="description">{{description}}</p>',
+          '</div>',
+          '</div>'
+          ].join(''),
+          engine: Hogan,
+          limit: 5
+        });
+      });
+    </script>
   </div>
+
+  <div id="search_container" class="row">
+    <div class="span3">
+      <%= image_tag("icon-step-1.png", :width => "80%") %>
+      <h3>Step 1</h3>
+      Find your hero using our handy search box!
+    </div>
+
+    <div class="span3">
+      <%= image_tag("icon-step-2.png", :width => "80%") %>
+      <h3>Step 2</h3>
+      Place a bid to meet your hero in person for one hour. Proceeds go to charity!
+    </div>
+
+    <div class="span3">
+      <%= image_tag("icon-step-3.png", :width => "80%") %>
+      <h3>Step 3</h3>
+      Stay on top. Remember to keep outbidding your less worthy rivals.
+    </div>
+
+    <div class="span3">
+      <%= image_tag("icon-step-4.png", :width => "80%") %>
+      <h3>Step 4</h3>
+      Once you're the highest bidder and your hero accepts your bid, we'll set you two up to meet.
+    </div>
+  </div> <!-- end marquee -->
 
   <hr />
 
-  <div id="how-it-works">
-    <h2 class="pagination-centered">How It Works</h2>
-    
-    <div class="row">
-      <div class="span8">
-        <h3>Step 1:</h3>
-        Find your hero.
+  <div id="carousel" class="row-fluid pagination-centered">
+    <h2 class="pagination-centered">Featured Heroes</h2>
+    <% @heroes.each do |hero| %>
+      <a href="/meet/<%= hero.name %>" id="hero-<%= hero.id %>">
+      <div class="span4 hero" id="hero-<%= hero.id %>">
+        <img src=<%= hero.original_profile_image_url %> class="img-rounded"/>
+        <h4>
+          <%= hero.name %>
+          <small>@<%= hero.screen_name %></small>
+        </h4>
       </div>
-      <div class="span4">
-        <%= image_tag("icon-step-1.png") %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="span8">
-        <h3>Step 2:</h3>
-        Place your bid to meet your hero in person for one hour.
-      </div>
-      <div class="span4">
-        <%= image_tag("icon-step-2.png") %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="span8">
-        <h3>Step 3:</h3>
-        Stay on top. Remember to keep outbidding your less worthy rivals.
-      </div>
-      <div class="span4">
-        <%= image_tag("icon-step-3.png") %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="span8">
-        <h3>Step 4:</h3>
-        Once you're the highest bidder and your hero accepts your bid, we'll set you two up for your meeting.
-      </div>
-      <div class="span4">
-        <%= image_tag("icon-step-4.png") %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    Are you a celebrity featured on this site? <a class="btn">Claim your profile!</a>
+      </a>
+    <% end %>
   </div>
 </div>

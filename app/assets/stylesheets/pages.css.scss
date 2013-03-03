@@ -6,6 +6,24 @@
   text-align: center;
 }
 
+#carousel {
+  margin-top: 45px;
+}
+
+#search_container {
+  margin-top: 45px;
+}
+
+.twitter-typeahead input {
+  padding: 8px 12px;
+  font-size: 20px;
+  line-height: 36px;
+  border: 2px solid #ccc;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
 .tt-dropdown-menu {
   width: 460px;
   text-align: left;
@@ -37,17 +55,6 @@
 .tt-suggestion .span5 {
   width: 360px;
   margin-left: 5px;
-}
-
-#search_bar {
-  padding: 8px 12px;
-  font-size: 24px;
-  line-height: 30px;
-  border: 2px solid #ccc;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  outline: none;
 }
 
 .screen_name {
