@@ -3,7 +3,19 @@
 		<div class="span12">
 			<h1>Hello Hero</h1>
 			<h2>meet your hero</h2>
-			<div id="search">
+      <div>
+        <input type="text" id="search"/>
+        <script type="text/javascript">
+          $(function(){
+            $('#search').typeahead({
+               name: 'twitter_verified_users',
+               prefetch: 'http://localhost:3000/twitter.json',
+               template: '{{name}} @{{screen_name}}',
+               engine: Hogan,
+               limit: 10
+            });
+          });
+        </script>
 
 			</div>
 		</div>

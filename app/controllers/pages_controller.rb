@@ -14,7 +14,4 @@ class PagesController < ApplicationController
 
   def contact
   end
-
-  def typeahead
-  end
 end
