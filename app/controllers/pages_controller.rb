@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def index #home
-    @heroes = TwitterVerifiedUser.limit(3)
+    @heroes = TwitterVerifiedUser.order('followers_count DESC').limit(100).sample(3)
   end
 
   def about
