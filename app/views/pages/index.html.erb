@@ -7,6 +7,12 @@
         <script type="text/javascript">
           $('#search_bar').focusin(function() { this.placeholder = '' });
           $('#search_bar').focusout(function() { this.placeholder = 'Who do you want to meet?' });
+          $("#search_bar").keyup(function (e) {
+            if (e.keyCode == 13) {
+              window.location = '/meet/'+this.value;
+            }
+          });
+
           $(function(){
             $('#search_bar').typeahead({
               name: 'twitter_verified_users',
