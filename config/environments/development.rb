@@ -34,4 +34,10 @@ HelloHero::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Twitter API credentials
+	config.twitter_consumer_key = 'BoRSYcvj7zDLReWs6tnc8A'
+	config.twitter_consumer_secret = '41pq5QxrdBe16KL0ajQXhHHRjKI6s2p1tJGFbqJCO0'
+	config.twitter_oauth_token = '62420328-xbHqLUUe0zApJ36EFhfJ8g2bWLRsyqPGJK0awEwk'
+	config.twitter_oauth_token_secret = 'iHoDg7U2ATLyUxMvaZYBKEm56KSIdbip02znquwGg'
 end
