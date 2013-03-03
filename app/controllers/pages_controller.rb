@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  def index
+  def index #home
+    @heroes = TwitterVerifiedUser.limit(3)
   end
 
   def about
