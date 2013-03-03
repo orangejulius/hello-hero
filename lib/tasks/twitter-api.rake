@@ -1,15 +1,15 @@
 desc "add new ids from the list of verified users"
 task :get_verified_users => :environment do |t, args|
-  next_cursor = -1
-  count = ENV['count'] || 100
-
+  batch = ENV['batch'] || 5000
   limit = ENV['limit'] || 10000000000
+
+  next_cursor = -1
   ids_added = 0
+  puts "getting up to #{limit} ids in batches of #{batch}"
   begin
     begin
-      puts "getting up to #{limit} ids in limites of #{count}"
       puts "on cursor: #{next_cursor}"
-      cursor = Twitter.friend_ids('verified', cursor: next_cursor, count: count)
+      cursor = Twitter.friend_ids('verified', cursor: next_cursor, count: batch)
       cursor.collection.each do |id|
         ids_added += 1
         user = TwitterVerifiedUser.find_by_twitter_id(id)
