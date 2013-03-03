@@ -4,8 +4,10 @@
       <h1>Hello Hero</h1>
       <h2>meet your hero</h2>
       <div>
-        <input type="text" id="search"/>
+        <input type="text" id="search" placeholder="Who do you want to meet?"  />
         <script type="text/javascript">
+          $('#search').focusin(function() { this.placeholder = '' });
+          $('#search').focusout(function() { this.placeholder = 'Who do you want to meet?' });
           $(function(){
               $('#search').typeahead({
                 name: 'twitter_verified_users',
