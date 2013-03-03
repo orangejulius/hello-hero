@@ -17,5 +17,6 @@ class TwitterVerifiedUser < ActiveRecord::Base
   end
 
   def highest_bid
+    Bid.where('twitter_verified_user_id = ?', self.twitter_id).maximum('amount').to_s
   end
 end
