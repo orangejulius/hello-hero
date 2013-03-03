@@ -1,23 +1,22 @@
 desc "add new ids from the list of verified users"
 task :get_verified_users => :environment do |t, args|
   next_cursor = -1
-  count = args[:count]
-  count ||= 100
+  count = ENV['count'] || 100
 
-  limit = args[:limit]
-  limit ||= 10000000000
+  limit = ENV['limit'] || 10000000000
   ids_added = 0
   begin
     begin
+      puts "getting up to #{limit} ids in limites of #{count}"
       puts "on cursor: #{next_cursor}"
-      cursor = Twitter.friend_ids('verified', next_cursor: next_cursor, count: count)
+      cursor = Twitter.friend_ids('verified', cursor: next_cursor, count: count)
       cursor.collection.each do |id|
         ids_added += 1
         user = TwitterVerifiedUser.find_by_twitter_id(id)
         TwitterVerifiedUser.create(twitter_id: id) unless user
       end
       next_cursor = cursor.next
-    end while next_cursor != 0 and ids_added < limit
+    end while next_cursor != 0 and ids_added < limit.to_i
   rescue Twitter::Error::TooManyRequests => error
     puts "#{Time.now}: sleeping until #{error.rate_limit.reset_at} (#{error.rate_limit.reset_in} seconds)"
     sleep error.rate_limit.reset_in
@@ -27,8 +26,7 @@ end
 
 desc "find user ids in db and get information for them (if it isn't already there)"
 task :get_user_info => :environment do |t, args|
-  limit = args[:count]
-  limit ||= 100
+  limit = ENV['limit'] || 100
 
   begin
     results = TwitterVerifiedUser.where(data:nil).limit(limit)
