@@ -6,4 +6,41 @@
 
 .tt-dropdown-menu  {
   width: 460px;
+  text-align: left;
+}
+
+.tt-suggestion {
+  border-top: 1px solid #CCCCCC;
+}
+
+.tt-suggestion img {
+  margin-top: 12px;
+  border-radius: 5px;
+}
+
+.tt-suggestion div {
+  height: 75px;
+}
+
+.tt-suggestion > .row {
+  margin:0;
+  padding:0;
+  width: 440px;
+}
+
+.tt-suggestion .span1 {
+  margin-left: 0;
+}
+.tt-suggestion .span5 {
+  width: 360px;
+  margin-left: 5px;
+}
+
+.screen_name {
+  float: right;
+  font-style: italic;
+}
+
+.real_name {
+  font-weight: bold;
 }

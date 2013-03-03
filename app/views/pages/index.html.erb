@@ -12,9 +12,20 @@
               $('#search_bar').typeahead({
                 name: 'twitter_verified_users',
                 prefetch: 'http://localhost:3000/twitter.json',
-                template: '{{value}} @{{screen_name}}',
+                template: [
+                '<div class="row">',
+                '<div class="span1">',
+                '<img src="{{img}}"/>',
+                '</div>',
+                '<div class="span5">',
+                '<p class="screen_name">@{{screen_name}}</p>',
+                '<p class="real_name">{{value}}</p>',
+                '<p class="description">{{description}}</p>',
+                '</div>',
+                '</div>'
+                ].join(''),
                 engine: Hogan,
-                limit: 10
+                limit: 5
                 });
               });
         </script>
