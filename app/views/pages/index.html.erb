@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row" id="marquee">
     <div class="span12">
-      <h1>Hello Hero</h1>
-      <h2>meet your hero</h2>
+      <h1>Meet your hero</h1><br />
       <div>
         <input type="text" id="search_bar" placeholder="Who do you want to meet?" class="span6">
         <script type="text/javascript">
@@ -31,38 +30,58 @@
         </script>
       </div>
     </div>
-  </div>
 
   <div class="row-fluid">
     <% @heroes.each do |hero| %>
       <div class="span4 hero" id="hero-<%= hero.id %>">
-        <%= hero.name %>
-        <img src=<%= hero.profile_image_url %> class="img-rounded"/>
-        <%= hero.screen_name %>
-        <%= hero.highest_bid %>
+        <img src=<%= hero.original_profile_image_url %> class="img-rounded"/>
+        <p><h4><%= hero.name %></h4></p>
+        <p><h5>@<%= hero.screen_name %></h5></p>
+        <p><h5><%= hero.highest_bid %></h5></p>
       </div>
     <% end %>
   </div>
 
-  <div class="row-fluid" id="how-it-works">
-    <h2>How it works</h2>
-    <p> 
-    Step 1:
-    Find your hero.
-    </p>
-    <p>
-    Step 2:
-    Place your bid to meet your hero in person for one hour.
-    </p>
-    <p>
-    Step 3:
-    Stay on top. Remember to keep outbidding your less worthy rivals.
-    </p>
-    <p>
-    Step 4:
-    Once you're the highest bidder and your hero accepts your bid, we'll set you two up for your meeting.
-    </p>
+  </div>
 
+
+
+  <div class="row-fluid" id="how-it-works">
+    <div class="span12">
+      <h2>How it works</h2>
+    </div>
+    <div class="span4">
+      <ul>
+        <li><%= image_tag("icon-step-1.png") %></li>
+        <li><%= image_tag("icon-step-2.png") %></li>
+        <li><%= image_tag("icon-step-3.png") %></li>
+        <li><%= image_tag("icon-step-4.png") %></li>
+      </ul>
+    </div>
+    <div class="span8" style="width: 400px;">
+      <h3> 
+        Step 1:
+      </h3>
+      Find your hero.
+      <p>
+      <h3> 
+        Step 2:
+      </h3>
+      Place your bid to meet your hero in person for one hour.
+      </p>
+      <p>
+      <h3> 
+        Step 3:
+      </h3>
+      Stay on top. Remember to keep outbidding your less worthy rivals.
+      </p>
+      <p>
+      <h3> 
+        Step 4:
+      </h3>
+        Once you're the highest bidder and your hero accepts your bid, we'll set you two up for your meeting.
+      </p>
+    </div>
   </div>
 </div>
 <footer>

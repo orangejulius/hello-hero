@@ -2,9 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#marquee { text-align: center;}
+#marquee { 
+  text-align: center;
+}
 
-.tt-dropdown-menu  {
+.tt-dropdown-menu {
   width: 460px;
   text-align: left;
 }
@@ -43,4 +45,21 @@
 
 .real_name {
   font-weight: bold;
+}
+
+.img-rounded {
+  height: 200px;
+  width: 200px;
+}
+
+.span4 li {
+  list-style: none;
+}
+
+.span4, .span8 {
+	float: left
+}
+
+.span4 .hero {
+	margin-top: 100px;
 }
