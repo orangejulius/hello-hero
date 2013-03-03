@@ -7,7 +7,7 @@ HelloHero::Application.routes.draw do
   get "pages/faq"
 
   get "meet/" => 'heroes#index'
-  get "meet/:name" => 'heroes#leaderboard'
+  get "meet/:name" => 'heroes#leaderboard', :as => 'leaderboard'
 
   ActiveAdmin.routes(self)
 

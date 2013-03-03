@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="span6">
+    <h2>
+      <img src="<%= @hero.big_profile_image_url %>" />
+      <%= @hero.name %> 
+      <small>
+        <a href="<%= "http://twitter.com/#{@hero.screen_name}"%>">
+          <%= "@#{@hero.screen_name}" %>
+        </a>
+      </small>
+    </h2>
+
+    <a href="" class="btn">Are you <%= @hero.name %>?</a>
+  </div>
+  <div class="span6">
+    <h3>Latest Bids</h3>
+
+    <% if @hero.bids.empty? %>
+      <p>There are no bids yet for <%= @hero.name %>...</p>
+    <% else %> 
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr> 
+          <th>User</th>
+          <th>Bid</th>
+          <th>Date Submitted</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @hero.bids.each do |bid| %>
+          <tr>
+            <td><%= bid.user.name %></td>
+            <td><%= number_to_currency(bid.amount) %></td>
+            <td><%= bid.updated_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+
+    <a class="btn btn-primary" href="">Do you want to meet <%= @hero.name %>?</a>
+  </div>
+</div>
+
+<div class="row">
+</div>

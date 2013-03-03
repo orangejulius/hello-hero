@@ -1,0 +1,27 @@
+<div class="row">
+  <h2>Leaderboard</h2>
+  <p>Here are the top 10 ranked celebrities based on how much a fan is willing to pay to meet them!</p>
+
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Hero</th>
+        <th>Bid</th>
+        <th>Fan</th>
+      </tr>
+    </thead>
+
+    <tbody>
+  <% @bids.each do |bid| %>
+    <tr>
+      <td>
+        <img src="<%= bid.twitter_verified_user.profile_image_url %>" />
+        <%= link_to(bid.twitter_verified_user.name, leaderboard_path(bid.twitter_verified_user.name)) %>
+      </td>
+      <td><%= number_to_currency(bid.amount) %></td>
+      <td><%= bid.user.name %></td>
+    </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

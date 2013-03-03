@@ -1,5 +1,6 @@
 class HeroesController < ApplicationController
   def index
+    @bids = Bid.find(:all, :order => 'amount DESC', :limit => 10)
   end
 
   def leaderboard
