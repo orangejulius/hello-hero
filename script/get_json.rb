@@ -8,8 +8,9 @@ end
 
 out = []
 TwitterVerifiedUser.where("data != ''").order('followers_count DESC').limit(items).each do |user|
-  out_json = { name: user.name, screen_name: user.screen_name,
+  out_json = { screen_name: user.screen_name,
    # profile_image_url: user.profile_image_url,
+    value: user.name,
     tokens: ([user.screen_name] + user.name.split).uniq }
   out.append out_json
 end

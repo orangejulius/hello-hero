@@ -10,7 +10,7 @@
               $('#search').typeahead({
                 name: 'twitter_verified_users',
                 prefetch: 'http://localhost:3000/twitter.json',
-                template: '{{name}} @{{screen_name}}',
+                template: '{{value}} @{{screen_name}}',
                 engine: Hogan,
                 limit: 10
                 });
