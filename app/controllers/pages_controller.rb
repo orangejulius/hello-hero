@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  def index
+  def index #home
+    @heroes = TwitterVerifiedUser.limit(3)
   end
 
   def about
@@ -12,5 +13,8 @@ class PagesController < ApplicationController
   end
 
   def contact
+  end
+
+  def typeahead
   end
 end

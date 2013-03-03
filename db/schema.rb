@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303004909) do
+ActiveRecord::Schema.define(:version => 20130303025902) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130303004909) do
     t.string  "name"
     t.string  "screen_name"
     t.string  "profile_image_url"
+    t.integer "followers_count"
   end
 
   create_table "users", :force => true do |t|

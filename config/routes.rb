@@ -9,6 +9,8 @@ HelloHero::Application.routes.draw do
 
   get "pages/contact"
 
+  get "pages/typeahead"
+
   ActiveAdmin.routes(self)
 
   devise_for :users

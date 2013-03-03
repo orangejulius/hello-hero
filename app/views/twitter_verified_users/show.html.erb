@@ -1,0 +1,9 @@
+		<% @hero %>
+			<div class="hero" id="hero-<%= hero.id %>">
+				<%= @hero.name %>
+				<img src=<%= @hero.picture_url %> class="img-rounded"/>
+				<%= @hero.twitter_handle %>
+				<%= @hero.highest_bid %> <% #=bid button %>
+			</div>
+		<% end %>
+	</div>
