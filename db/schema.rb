@@ -29,10 +29,8 @@ ActiveRecord::Schema.define(:version => 20130303004908) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "twitter_verified_users", :force => true do |t|
-    t.integer  "twitter_id"
-    t.string   "data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "twitter_id"
+    t.text    "data"
   end
 
   create_table "users", :force => true do |t|
