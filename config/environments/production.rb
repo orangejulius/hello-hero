@@ -64,4 +64,10 @@ HelloHero::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Twitter API credentials
+  config.twitter_consumer_key = 'wtigkLBAH1bw4pDk0qNmRg'
+  config.twitter_consumer_secret = 'W5NwXgrsUMHRXlI44p0MVDFDRrSex7BwzilHk7UZE'
+  config.twitter_oauth_token = '15061294-rI1dD9aZj0RcSJA1sPcFGilFlfTKhvjMS6PeBDyTk'
+  config.twitter_oauth_token_secret = 'V7kgwLswhDLP8ZCKXk0iaSgaoaJAHhEEa88x7x96dY'
 end
