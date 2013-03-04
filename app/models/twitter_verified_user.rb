@@ -25,6 +25,10 @@ class TwitterVerifiedUser < ActiveRecord::Base
     Bid.where('twitter_verified_user_id = ?', self.twitter_id).maximum('amount').to_s
   end
 
+  def description
+    JSON.parse(data)['description']
+  end
+
   def set_data
     json = JSON.parse(data)
     self.name = json['name'].strip
