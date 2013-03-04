@@ -35,15 +35,18 @@
 
     <p>Do you want to meet <%= @hero.name %>?</p>
     <% if current_user %>
-      <%= form_for(@bid, :remote => true, :controller => :bids, :action => :create ) do |f| %>
-        <%= f.label :amount %>
-        <%= f.text_field :amount %>
+      <p><strong>Submit a bid!</strong></p>
+      <%= form_for(@bid, :html => { :class => 'form-inline' }) do |f| %>
+        <div class="input-prepend">
+        <span class="add-on">$</span>
+        <%= f.text_field :amount, :class => 'span2' %>
+        </div>
         <%= f.hidden_field :twitter_verified_user_id, :value => @hero.id %> 
         <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.submit %>
+        <%= f.button 'Submit Bid', :class => 'btn' %>
       <% end %>
     <% else %>
-      <a href="/sign_in">Please sign_in to bid</a>
+      Please <%= link_to 'log in', new_user_session_path %> or <%= link_to 'register', new_user_registration_path %> first to bid for an hour of this hero's time!
     <% end %>
   </div>
 </div>
