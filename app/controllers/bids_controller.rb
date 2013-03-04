@@ -3,10 +3,12 @@ class BidsController < ApplicationController
     @bid = Bid.new(params["bid"])
     respond_to do |format|
       if @bid.save
-        format.html { redirect_to( :back, :notice => 'Bid created.')}
+        flash[:success] = "Your bid of #{view_context.number_to_currency(@bid.amount)} was successfully created!"
+        format.html { redirect_to(:back) }
         format.js
       else
-        format.html { redirect_to( :back, :notice => 'Bid not created - maybe you want to update?' ) }
+        flash[:error] = "There was a problem submitting your bid."
+        format.html { redirect_to(:back) }
       end
     end
   end
