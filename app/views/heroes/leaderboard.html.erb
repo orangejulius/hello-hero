@@ -5,7 +5,7 @@
       <img src="<%= @hero.big_profile_image_url %>" />
       <%= @hero.name %>
       <small>
-        <a href="<%= "http://twitter.com/#{@hero.screen_name}"%>">
+        <a href="<%= "http://twitter.com/#{@hero.screen_name}" %>" target="_blank">
           <%= "@#{@hero.screen_name}" %>
         </a>
       </small>
@@ -41,7 +41,7 @@
     <% if @bid.new_record? %>
       <p><strong>Submit a bid!</strong></p>
     <% else %>
-      <p><strong>Update your bid!</strong></p>
+      <p><strong>Increase your bid!</strong></p>
     <% end %>
     <% form_method = @bid.new_record? ? 'post' : 'put' %>
     <%= form_for(@bid, :method => form_method, :html => { :class => 'form-inline' }) do |f| %>
