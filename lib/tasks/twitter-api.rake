@@ -44,12 +44,6 @@ task :get_user_info => :environment do |t, args|
 
         #store all data for potential future use
         db_user.data = data
-
-        #set some known valuable fields
-        db_user.name = user.name
-        db_user.screen_name = user.screen_name
-        db_user.profile_image_url = user.profile_image_url
-        db_user.followers_count = user.followers_count
         db_user.save!
         rows_updated += 1
       end
