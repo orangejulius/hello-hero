@@ -1,60 +1,79 @@
 <% content_for(:title, @hero.name) %>
-<div class="row">
-  <div class="span6">
-    <h2>
-      <img src="<%= @hero.big_profile_image_url %>" />
-      <%= @hero.name %>
-      <small>
-        <a href="<%= "http://twitter.com/#{@hero.screen_name}" %>" target="_blank">
-          <%= "@#{@hero.screen_name}" %>
-        </a>
-      </small>
-    </h2>
-    <p>
-    <em><%= @hero.description %></em>
-    </p>
-
-    <%= link_to "Are you #{@hero.name}?", pages_make_a_dream_come_true_path, :class => 'btn' %></a>
-</div>
-<div class="span6">
-  <h3>Latest Bids</h3>
-
-  <% if @hero.bids.empty? %>
-    <p>There are no bids yet for <%= @hero.name %>...</p>
-  <% else %>
-    <table class="table table-bordered table-striped table-hover">
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Bid</th>
-          <th>Date Submitted</th>
-        </tr>
-      </thead>
-      <tbody id="bids">
-        <%= render :partial => 'bids/bid', :collection => @hero.bids %>
-      </tbody>
-    </table>
-  <% end %>
-
-  <p>Do you want to meet <%= @hero.name %>?</p>
-  <% if current_user %>
-    <% if @bid.new_record? %>
-      <p><strong>Submit a bid!</strong></p>
-    <% else %>
-      <p><strong>Increase your bid!</strong></p>
-    <% end %>
-    <% form_method = @bid.new_record? ? 'post' : 'put' %>
-    <%= form_for(@bid, :method => form_method, :html => { :class => 'form-inline' }) do |f| %>
-      <div class="input-prepend">
-        <span class="add-on">$</span>
-        <%= f.text_field :amount, :class => 'span2' %>
+<div class="main-content">
+  <div class="profile">
+    <div class="bg-image">
+      <img src="<%= @hero.get_json['profile_background_image_url']%>">
+      <div class="profile-info">
+        <img class="profile-image" src="<%= @hero.big_profile_image_url %>">
+        <div class="profile-right">
+          <h1><%= @hero.name %></h1>
+          <a href="<%= "http://twitter.com/#{@hero.screen_name}" %>" target="_blank">
+            <%= "@#{@hero.screen_name}" %>
+          </a>
+          <p class="description">
+          <%= @hero.description %>
+          </p>
+        </div>
+        <div class="bid-info">
+          <span><%= pluralize(@hero.bids.count,'bid') %></span>
+          <div class="recent-bid">
+            <h4>Most Recent Bid</h4>
+            <% if @hero.bids.count > 0 %>
+              <%= @hero.bids.first.user.name %>
+            <% else %>
+              No bids
+            <% end %>
+          </div>
+        </div>
       </div>
-      <%= f.hidden_field :twitter_verified_user_id, :value => @hero.id %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-      <%= f.button 'Submit Bid', :class => 'btn btn-success' %>
-    <% end %>
-  <% else %>
-    Please <%= link_to 'log in', new_user_session_path %> or <%= link_to 'register', new_user_registration_path %> first to bid for an hour of this hero's time!
-  <% end %>
-</div>
+    </div>
+    <div class="bids-head">
+      <h2>Latest Bids</h2>
+    </div>
+    <div class="bids">
+      <% if @hero.bids.empty? %>
+        <p>There are no bids yet for <%= @hero.name %>...</p>
+      <% else %>
+        <p><strong>Increase your bid!</strong></p>
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Bid</th>
+              <th>Date Submitted</th>
+            </tr>
+          </thead>
+          <tbody id="bids">
+            <%= render :partial => 'bids/bid', :collection => @hero.bids %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="sidebar-box">
+      <p>Do you want to meet <%= @hero.name %>?</p>
+      <% if current_user %>
+        <% if @bid.new_record? %>
+          <p><strong>Submit a bid!</strong></p>
+        <% else %>
+          <p><strong>Update your bid!</strong></p>
+        <% end %>
+        <% form_method = @bid.new_record? ? 'post' : 'put' %>
+        <%= form_for(@bid, :method => form_method, :html => { :class => 'form-inline' }) do |f| %>
+          <div class="input-prepend">
+            <span class="add-on">$</span>
+            <%= f.text_field :amount, :class => 'span2' %>
+          </div>
+          <%= f.hidden_field :twitter_verified_user_id, :value => @hero.id %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <p class="the-button">
+            <%= f.button 'Submit Bid', :class => 'btn btn-success' %>
+            </p>
+        <% end %>
+      <% else %>
+        Please <%= link_to 'log in', new_user_session_path %> or <%= link_to 'register', new_user_registration_path %> first to bid for an hour of this hero's time!
+      <% end %>
+    </div>
+  </div>
 </div>

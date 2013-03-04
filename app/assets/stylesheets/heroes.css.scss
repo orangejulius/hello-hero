@@ -1,3 +1,138 @@
 // Place all the styles related to the Heroes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main-content {
+  width: 940px;
+  margin: 0 auto;
+}
+
+.profile {
+  float: left;
+  width: 640px;
+  background: #fff;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.profile .bg-image {
+  width: 640px;
+  height: 333px;
+  overflow: hidden;
+  position: relative;
+}
+.bg-image > img {
+  width: 640px;
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-radius-topleft: 6px;
+  -moz-border-radius-topright: 6px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.profile-info {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: url(https://d3levm2kxut31z.cloudfront.net/assets/profile/bc-bg-437f129866fada39c9aed42c909d1cae.png) repeat;
+  padding: 20px 25px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  color: #FFF;
+}
+
+.profile-image {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  border: solid 4px #fff;
+  float: left;
+}
+
+.profile-right {
+  float: left;
+  margin: 0 0 15px 30px;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+.profile-right h1 {
+  font-size: 2.5em;
+}
+
+.description {
+  font-style: italic;
+}
+
+.bid-info {
+  clear: both;
+  padding-top: 20px;
+  background: url(https://d3levm2kxut31z.cloudfront.net/assets/profile/bc-hr-6947acb53660e69e0c55a42df7a64d72.png) repeat-x top;
+}
+.bid-info span {
+  line-height: 32px;
+  color: #fff;
+  font-size: 1.2em;
+  float: left;
+  -webkit-transform: translate3d(0, 0, 0);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-font-smoothing: subpixel-antialiased;
+  font-smoothing: subpixel-antialiased;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.recent-bid {
+  float: left;
+  width: 330px;
+  margin-left: 30px;
+}
+
+.bids-head {
+  padding: 20px;
+  background: #eee url(https://d3levm2kxut31z.cloudfront.net/assets/profile/skills-header-bg-4ad90a88789a0e6f987a991331e46b68.png) repeat;
+  border-bottom: solid 1px #e0e1db;
+}
+
+.bids {
+  padding: 20px;
+}
+
+.sidebar {
+  float: right;
+  width: 270px;
+  background: #fff;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.sidebar-box {
+  margin: 15px;
+  padding: 15px;
+  border: 1px solid #eee;
+}
+
+.the-button {
+  margin: 10px 0;
+}
