@@ -6,41 +6,8 @@
     <p class="lead">
       Ever wanted to meet your favorite celebrity? Now you can! 
     </p>
+    <%= render 'layouts/searchbar' %>
 
-    <input type="text" id="search_bar" placeholder="Who do you want to meet?" class="span6">
-
-    <script type="text/javascript">
-      $('#search_bar').focusin(function() { this.placeholder = '' });
-      $('#search_bar').focusout(function() { this.placeholder = 'Who do you want to meet?' });
-      $("#search_bar").keyup(function (e) {
-        if (e.keyCode == 13) {
-          window.location = '/meet/'+this.value;
-        }
-      });
-
-      $(function(){
-        $('#search_bar').typeahead({
-          name: 'twitter_verified_users',
-          prefetch: '/twitter.json',
-          remote: '/twitter-big.json',
-          ttl_ms: 60 * 60 * 1e3, //1 hour
-          template: [
-          '<div class="row">',
-          '<div class="span1">',
-          '<img src="{{img}}"/>',
-          '</div>',
-          '<div class="span5">',
-          '<p class="screen_name">@{{screen_name}}</p>',
-          '<p class="real_name">{{value}}</p>',
-          '<p class="description">{{description}}</p>',
-          '</div>',
-          '</div>'
-          ].join(''),
-          engine: Hogan,
-          limit: 5
-        });
-      });
-    </script>
   </div>
 
   <div id="search_container" class="row">
