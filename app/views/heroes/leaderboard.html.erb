@@ -23,9 +23,21 @@
           <div class="recent-bid">
             <h4>Most Recent Bid</h4>
             <% if @hero.bids.count > 0 %>
-              <%= @hero.bids.first.user.name %>
+              <% recent_bid = @hero.bids.last %>
+              <%= recent_bid.user.name %><br>
+              <%= number_to_currency recent_bid.amount %>
             <% else %>
-              No bids
+              No bids yet...
+            <% end %>
+          </div>
+          <div class="highest-bid">
+            <h4>Highest Bid</h4>
+            <% if @hero.bids.count > 0 %>
+              <% highest_bid = @hero.bids.sort_by { |bid| bid.amount }.last %>
+              <%= highest_bid.user.name %><br>
+              <%= number_to_currency highest_bid.amount %>
+            <% else %>
+              Be the first!
             <% end %>
           </div>
         </div>
@@ -38,7 +50,6 @@
       <% if @hero.bids.empty? %>
         <p>There are no bids yet for <%= @hero.name %>...</p>
       <% else %>
-        <p><strong>Increase your bid!</strong></p>
         <table class="table table-bordered table-striped table-hover">
           <thead>
             <tr>
@@ -61,8 +72,10 @@
       <% if current_user %>
         <% if @bid.new_record? %>
           <p><strong>Submit a bid!</strong></p>
+        <% elsif @bid == highest_bid %>
+          <p><strong>(You're winning!)</strong></p>
         <% else %>
-          <p><strong>Update your bid!</strong></p>
+          <p><strong>Increase your bid!</strong></p>
         <% end %>
         <% form_method = @bid.new_record? ? 'post' : 'put' %>
         <%= form_for(@bid, :method => form_method, :html => { :class => 'form-inline' }) do |f| %>
@@ -77,7 +90,7 @@
             </p>
         <% end %>
       <% else %>
-        Please <%= link_to 'log in', new_user_session_path %> or <%= link_to 'register', new_user_registration_path %> first to bid for an hour of this hero's time!
+        Please <%= link_to 'log in', new_user_session_path %> or <%= link_to 'register', new_user_registration_path %> to bid for an hour of this hero's time!
       <% end %>
     </div>
   </div>

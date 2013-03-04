@@ -38,6 +38,7 @@
 
 .profile-info {
   position: absolute;
+  width: 530px;
   top: 30px;
   left: 30px;
   background: url(https://d3levm2kxut31z.cloudfront.net/assets/profile/bc-bg-437f129866fada39c9aed42c909d1cae.png) repeat;
@@ -51,6 +52,8 @@
 }
 
 .profile-image {
+  height: 74px;
+  width: 74px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
@@ -71,6 +74,22 @@
 .profile-right h1 {
   margin: 0;
   font-size: 2.5em;
+}
+
+.recent-bid h4, .highest-bid h4 {
+  margin: 0;
+}
+
+.recent-bid {
+  float: left;
+  width: 180px;
+  margin-left: 30px;
+}
+
+.highest-bid {
+  float: left;
+  width: 180px;
+  margin-left: 30px;
 }
 
 .description {
@@ -98,12 +117,6 @@
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
-}
-
-.recent-bid {
-  float: left;
-  width: 330px;
-  margin-left: 30px;
 }
 
 .bids-head {
