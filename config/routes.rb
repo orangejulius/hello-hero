@@ -10,6 +10,8 @@ HelloHero::Application.routes.draw do
   get "meet/" => 'heroes#index'
   get "meet/:name" => 'heroes#leaderboard', :as => 'leaderboard', :constraints => { :name => /[^\/]+/ }
 
+  post "blacklist" => 'blacklist#blacklist'
+
   ActiveAdmin.routes(self)
 
   devise_for :users
