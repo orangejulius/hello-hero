@@ -13,15 +13,25 @@
 #search_container {
   margin-top: 45px;
 }
-
+.tt-hint {
+  width: 446px;
+}
 .twitter-typeahead input {
-  padding: 8px 12px;
-  font-size: 20px;
-  line-height: 36px;
   border: 2px solid #ccc;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
+}
+
+.navbar .twitter-typeahead {
+  bottom: 5px;
+  margin-left: 50px;
+}
+
+#marquee .twitter-typeahead input {
+  padding: 8px 12px;
+  font-size: 20px;
+  line-height: 36px;
 }
 
 .tt-dropdown-menu {
@@ -31,6 +41,7 @@
 
 .tt-suggestion {
   border-top: 1px solid #CCCCCC;
+  color: #333;
 }
 
 .tt-suggestion img {

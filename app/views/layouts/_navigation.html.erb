@@ -1,4 +1,7 @@
 <%= link_to(image_tag('Hello-Hero-Logo.png', :alt => "Hello Hero Logo"), root_path) %>
+<% unless controller.controller_name == 'pages' and controller.action_name == 'index' %>
+  <%= render 'layouts/searchbar' %>
+<% end %>
 <ul class="nav pull-right">
   <% if user_signed_in? %>
     <li>
