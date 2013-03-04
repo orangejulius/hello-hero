@@ -29,6 +29,10 @@ class TwitterVerifiedUser < ActiveRecord::Base
     JSON.parse(data)['description']
   end
 
+  def get_json
+    JSON.parse(data)
+  end
+
   def set_data
     json = JSON.parse(data)
     self.name = json['name'].strip
