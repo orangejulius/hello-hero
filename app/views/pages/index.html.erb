@@ -22,6 +22,7 @@
         $('#search_bar').typeahead({
           name: 'twitter_verified_users',
           prefetch: '/twitter.json',
+          ttl_ms: -1,
           template: [
           '<div class="row">',
           '<div class="span1">',

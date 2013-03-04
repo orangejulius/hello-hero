@@ -191,9 +191,11 @@
                     return decode(ls.getItem(this._prefix(key)));
                 },
                 set: function(key, val, ttl) {
-                    if (utils.isNumber(ttl)) {
+									  if (ttl == -1) {
+											return false;
+										} else if (utils.isNumber(ttl)) {
                         ls.setItem(this._ttlKey(key), encode(now() + ttl));
-                    } else {
+										}else {
                         ls.removeItem(this._ttlKey(key));
                     }
                     return ls.setItem(this._prefix(key), encode(val));
