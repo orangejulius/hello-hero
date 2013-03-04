@@ -1,7 +1,7 @@
 <% content_for(:title, 'Edit Account') %>
 <div class="container">
   <div class="row">
-    <div class="span4 offset4">
+    <div class="span4">
       <div class="well">
         <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
@@ -30,7 +30,7 @@
           <div><%= f.submit "Update", :class => 'btn btn-primary' %></div>
         <% end %>
 
-        <h3>Cancel my account</h3>
+        <h2>Cancel my account</h2>
 
         <p>
           Unhappy with us? <a href="mailto:hi@hellohero.co">Let us know!</a> <br />
@@ -38,6 +38,39 @@
           <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-danger' %>
         </p>
       </div>
+    </div>
+
+    <div class="span8">
+      <h2>Current Bids</h2>
+
+      <% if current_user.bids.empty? %>
+        <p>You have no bids yet.</p>
+        <p><%= link_to 'Find a Hero to meet!', root_path, :class => 'btn btn-success' %></p>
+      <% else %>
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Hero</th>
+              <th>Amount</th>
+              <th>Created At</th>
+              <th>Updated On</th>
+              <th>Mo' Money?</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          <% current_user.bids.each do |bid| %>
+            <tr>
+              <td><%= bid.twitter_verified_user.name %></td>
+              <td><%= number_to_currency bid.amount %></td>
+              <td><%= bid.created_at %></td>
+              <td><%= bid.updated_at %></td>
+              <td><button class="btn btn-success">Update Bid!</button></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>
