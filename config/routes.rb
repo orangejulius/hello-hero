@@ -5,6 +5,7 @@ HelloHero::Application.routes.draw do
   get "pages/privacy"
   get "pages/contact"
   get "pages/faq"
+  get "pages/make_a_dream_come_true"
 
   get "meet/" => 'heroes#index'
   get "meet/:name" => 'heroes#leaderboard', :as => 'leaderboard'
