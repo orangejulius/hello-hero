@@ -11,25 +11,25 @@
 }
 
 .navbar .nav>li>a {
-  color: #ccc; 
+  color: #ccc;
   text-shadow: 0 1px 0 #000;
 }
 
-.navbar .nav>li>a:focus, 
+.navbar .nav>li>a:focus,
 .navbar .nav>li>a:hover {
-  color: #fff; 
+  color: #fff;
   text-shadow: 0 1px 0 #000;
 }
 
 h2.pagination-centered {
-  font-family: 'Dancing Script', cursive; 
+  font-family: 'Dancing Script', cursive;
   font-size: 40px;
   color: #f9c900;
   margin-bottom: 20px;
 }
 
 #footer {
-  margin-top: 45px; 
+  margin-top: 45px;
 }
 
 #footer > .nav-tabs > li, #footer > .nav-pills > li {
