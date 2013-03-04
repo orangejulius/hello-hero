@@ -6,16 +6,20 @@
       <div class="profile-info">
         <img class="profile-image" src="<%= @hero.big_profile_image_url %>">
         <div class="profile-right">
-          <h1><%= @hero.name %></h1>
-          <a href="<%= "http://twitter.com/#{@hero.screen_name}" %>" target="_blank">
-            <%= "@#{@hero.screen_name}" %>
-          </a>
+          <h1><%= @hero.name %>
+            <br>
+            <small>
+            <a href="<%= "http://twitter.com/#{@hero.screen_name}" %>" target="_blank">
+              <%= "@#{@hero.screen_name}" %>
+            </a>
+          </small>
+          </h1>
           <p class="description">
           <%= @hero.description %>
           </p>
         </div>
         <div class="bid-info">
-          <span><%= pluralize(@hero.bids.count,'bid') %></span>
+          <span class="badge badge-info"><%= pluralize(@hero.bids.count,'bid') %></span>
           <div class="recent-bid">
             <h4>Most Recent Bid</h4>
             <% if @hero.bids.count > 0 %>
@@ -52,7 +56,8 @@
   </div>
   <div class="sidebar">
     <div class="sidebar-box">
-      <p>Do you want to meet <%= @hero.name %>?</p>
+      <h4>Do you want to meet
+        <br><%= @hero.name %>?</h4>
       <% if current_user %>
         <% if @bid.new_record? %>
           <p><strong>Submit a bid!</strong></p>
