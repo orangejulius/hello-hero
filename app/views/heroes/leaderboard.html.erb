@@ -28,22 +28,27 @@
         </tr>
       </thead>
       <tbody id="bids">
-        <%= render :partial => 'bids/bid', :collection => @bids %>
+        <%= render :partial => 'bids/bid', :collection => @hero.bids %>
       </tbody>
     </table>
     <% end %>
 
     <p>Do you want to meet <%= @hero.name %>?</p>
     <% if current_user %>
+      <% if @bid.new_record? %>
       <p><strong>Submit a bid!</strong></p>
-      <%= form_for(@bid, :html => { :class => 'form-inline' }) do |f| %>
+      <% else %>
+      <p><strong>Update your bid!</strong></p>
+      <% end %>
+      <% form_method = @bid.new_record? ? 'post' : 'put' %>
+      <%= form_for(@bid, :method => form_method, :html => { :class => 'form-inline' }) do |f| %>
         <div class="input-prepend">
         <span class="add-on">$</span>
         <%= f.text_field :amount, :class => 'span2' %>
         </div>
         <%= f.hidden_field :twitter_verified_user_id, :value => @hero.id %> 
         <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.button 'Submit Bid', :class => 'btn' %>
+        <%= f.button 'Submit Bid', :class => 'btn btn-success' %>
       <% end %>
     <% else %>
       Please <%= link_to 'log in', new_user_session_path %> or <%= link_to 'register', new_user_registration_path %> first to bid for an hour of this hero's time!

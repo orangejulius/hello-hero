@@ -61,11 +61,19 @@
           <tbody>
           <% current_user.bids.each do |bid| %>
             <tr>
-              <td><%= bid.twitter_verified_user.name %></td>
+              <td><%= link_to bid.twitter_verified_user.name, "/meet/#{bid.twitter_verified_user.name}" %></td>
               <td><%= number_to_currency bid.amount %></td>
               <td><%= bid.created_at %></td>
               <td><%= bid.updated_at %></td>
-              <td><button class="btn btn-success">Update Bid!</button></td>
+              <td>
+                <%= form_for(bid) do |f| %>
+                  <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    <%= f.text_field :amount, :class => 'span1' %>
+                  </div>
+                  <%= f.button 'Update Bid!', :class => 'btn btn-success' %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
           </tbody>
