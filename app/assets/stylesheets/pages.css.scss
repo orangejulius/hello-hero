@@ -16,6 +16,7 @@
 .tt-hint {
   width: 446px;
 }
+
 .twitter-typeahead input {
   border: 2px solid #ccc;
   -webkit-border-radius: 8px;
@@ -25,7 +26,13 @@
 
 .navbar .twitter-typeahead {
   bottom: 5px;
-  margin-left: 50px;
+  margin-left: 20px;
+  width: 400px;
+}
+
+.navbar .tt-hint,
+.navbar .twitter-typeahead input {
+  width: 400px;
 }
 
 #marquee .twitter-typeahead input {
