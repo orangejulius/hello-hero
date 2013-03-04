@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303232316) do
+ActiveRecord::Schema.define(:version => 20130304040341) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(:version => 20130303232316) do
     t.datetime "created_at",                                              :null => false
     t.datetime "updated_at",                                              :null => false
   end
+
+  create_table "blacklists", :force => true do |t|
+    t.integer "twitter_verified_user_id"
+  end
+
+  add_index "blacklists", ["twitter_verified_user_id"], :name => "index_blacklists_on_twitter_verified_user_id"
 
   create_table "twitter_verified_users", :force => true do |t|
     t.integer "twitter_id"

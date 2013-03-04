@@ -87,3 +87,44 @@ a.hero {
   text-decoration: none;
   color: #000;
 }
+
+.hero {
+  width: 200px;
+  height: 200px;
+}
+
+.hero form {
+  position: absolute;
+  display: block;
+  height: 200px;
+  width: 200px;
+  z-index: 1;
+}
+
+.hero form input[type=submit] {
+  width: 200px;
+  display: none;
+  margin-left: 50px;
+  height: 0;
+  border: none;
+  display: block;
+  -webkit-transition: height 0.3s ease;
+  background: rgba(0,0,0, 0);
+  text-shadow: 2px 2px 2px black;
+  color: #FFF;
+}
+
+.hero form > input {
+  display: none;
+}
+
+.hero form:hover input[type=submit] {
+  background: rgba(0,0,0, .2);
+  height: 50px;
+}
+
+.hero form input[type=submit]:hover {
+  background: rgba(0,0,0, .2);
+  height: 50px;
+  font-size: 30px;
+}

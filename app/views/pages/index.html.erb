@@ -83,6 +83,7 @@
     <% @heroes.each do |hero| %>
       <a href="/meet/<%= hero.name %>" id="hero-<%= hero.id %>">
       <div class="span4 hero" id="hero-<%= hero.id %>">
+        <%= render 'twitter_verified_users/blacklist', :hero => hero %>
         <img src=<%= hero.original_profile_image_url %> class="img-rounded"/>
         <h4>
           <%= hero.name %>

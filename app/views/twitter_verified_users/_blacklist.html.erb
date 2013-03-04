@@ -1,0 +1,6 @@
+<% if current_user and current_user.admin? %>
+  <%= form_for hero, :url => {action: 'blacklist', controller: 'blacklist'}, method: 'post' do |f| %>
+    <%= hidden_field_tag(:screen_name, hero.screen_name) %>
+    <%= submit_tag("Blacklist") %>
+  <% end %>
+<% end %>

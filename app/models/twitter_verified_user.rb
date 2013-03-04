@@ -3,6 +3,11 @@ class TwitterVerifiedUser < ActiveRecord::Base
 
   has_many :bids
   has_many :users, through: :bids
+  has_one :blacklist
+
+  def self.not_blacklisted
+    self.where('id not in (SELECT twitter_verified_user_id from blacklists)')
+  end
 
   def big_profile_image_url
     profile_image_url.sub('normal', 'bigger')
