@@ -65,6 +65,20 @@ task :get_user_info => :environment do |t, args|
   puts "updated #{rows_updated} rows"
 end
 
+desc "add users from a file"
+task :add_users => :environment do |t|
+  filename = ENV['filename']
+  puts filename
+  File.open(filename).each do |line|
+    user = Twitter.user(line)
+    puts user.name
+    db_user = TwitterVerifiedUser.new
+    db_user.twitter_id = user.id
+    db_user.data = user.to_hash.to_json
+    db_user.set_data
+    db_user.save!
+  end
+end
 
 desc "show how many rows, and rows with full user data, are in the DB"
 task :status => :environment do |t|
