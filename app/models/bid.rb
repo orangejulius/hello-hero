@@ -3,4 +3,6 @@ class Bid < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :twitter_verified_user
+
+  validates :user_id, :uniqueness => { :scope => :twitter_verified_user_id }
 end

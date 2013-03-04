@@ -7,7 +7,7 @@ class BidsController < ApplicationController
         format.html { redirect_to( :back, :notice => 'Bid created.')}
         format.js
       else
-        format.html { render( :new, :notice => 'Could not create new bid')}
+        format.html { redirect_to( :back, :notice => 'Bid not created - maybe you want to update?' ) }
       end
     end
   end
