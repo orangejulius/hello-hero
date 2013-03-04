@@ -1,7 +1,10 @@
+body {
+  background-image: url('/assets/background.gif');
+}
+
 #main {
   margin-top: 40px;
   padding-top: 20px;
-  background-image: url('/assets/background.gif');
 }
 
 hr {
