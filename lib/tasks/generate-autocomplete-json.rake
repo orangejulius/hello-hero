@@ -8,8 +8,10 @@ end
 desc "generate json for use by typeahead.js"
 task :make_json => :environment do |t|
   limit = ENV['limit'] || 25000
+  offset = ENV['offset'] || 0
+  filename = ENV['filename'] || 'public/twitter.json'
   out = []
-  TwitterVerifiedUser.where("data != ''").order('followers_count DESC').limit(limit).each do |user|
+  TwitterVerifiedUser.where("data != ''").order('followers_count DESC').limit(limit).offset(offset).each do |user|
     data_json = JSON.parse(user.data)
     out_json = { screen_name: user.screen_name,
       value: user.name,
@@ -19,7 +21,7 @@ task :make_json => :environment do |t|
     out.append out_json
   end
 
-  File.open('public/twitter.json', 'w') do |f|
+  File.open(filename, 'w') do |f|
     f.write(out.to_json)
   end
 end
