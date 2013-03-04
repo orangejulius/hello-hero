@@ -6,16 +6,15 @@ class HeroesController < ApplicationController
   def leaderboard
     @hero = TwitterVerifiedUser.find_by_name(params[:name])
 
+    if @hero.nil?
+      redirect_to root_path, :notice => "Sorry... #{params[:name]} isn't a person in our system at this time. <a href='mailto:hi@hellohero.co'>Contact us</a> to add them!" and return
+    end
+
     # Find intersection of hero's bids and user's bids,
     # grab (what should be) the only entry / aka first entry,
     # if it doesn't exist then create a new bid.
     # This is used to either allow the user to place a new bid for the first time,
     # or update their existing bid (but only increase it).
     @bid = (@hero.bids & current_user.bids).first || Bid.new
-
-    unless @hero
-      flash[:error] = "No one named #{params[:name]} was found..."
-      redirect_to :action => :index
-    end
   end
 end
