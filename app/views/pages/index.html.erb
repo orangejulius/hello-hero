@@ -72,7 +72,14 @@
   <hr />
 
   <div id="carousel" class="row-fluid pagination-centered">
-    <h2 class="pagination-centered">Featured Heroes</h2>
+    <h2 class="pagination-centered">
+      <% 3.times do %>
+      <%= image_tag("star.png") %> 
+      <% end %> Featured Heroes
+      <% 3.times do %>
+      <%= image_tag("star.png") %> 
+      <% end %>
+    </h2>
     <% @heroes.each do |hero| %>
       <a href="/meet/<%= hero.name %>" id="hero-<%= hero.id %>">
       <div class="span4 hero" id="hero-<%= hero.id %>">

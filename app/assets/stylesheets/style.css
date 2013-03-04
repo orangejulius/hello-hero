@@ -21,6 +21,13 @@
   text-shadow: 0 1px 0 #000;
 }
 
+h2.pagination-centered {
+  font-family: 'Dancing Script', cursive; 
+  font-size: 40px;
+  color: #f9c900;
+  margin-bottom: 20px;
+}
+
 #footer {
   margin-top: 45px; 
 }
