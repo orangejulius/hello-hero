@@ -87,3 +87,32 @@ a.hero {
   text-decoration: none;
   color: #000;
 }
+
+.hero {
+  width: 200px;
+  height: 200px;
+}
+
+.hero form {
+  position: absolute;
+  display: block;
+  height: 200px;
+  width: 200px;
+  z-index: 1;
+}
+
+.hero form input[type=submit] {
+  height: 0px;
+}
+
+.hero form > input {
+  display: none;
+}
+
+.hero form:hover input[type=submit] {
+  display: block;
+  margin-left: 50px;
+  width: 200px;
+  height: 25%;
+  border: none;
+}
