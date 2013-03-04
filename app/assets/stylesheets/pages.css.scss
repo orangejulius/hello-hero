@@ -102,7 +102,16 @@ a.hero {
 }
 
 .hero form input[type=submit] {
-  height: 0px;
+  width: 200px;
+  display: none;
+  margin-left: 50px;
+  height: 0;
+  border: none;
+  display: block;
+  -webkit-transition: height 0.3s ease;
+  background: rgba(0,0,0, 0);
+  text-shadow: 2px 2px 2px black;
+  color: #FFF;
 }
 
 .hero form > input {
@@ -110,9 +119,12 @@ a.hero {
 }
 
 .hero form:hover input[type=submit] {
-  display: block;
-  margin-left: 50px;
-  width: 200px;
-  height: 25%;
-  border: none;
+  background: rgba(0,0,0, .2);
+  height: 50px;
+}
+
+.hero form input[type=submit]:hover {
+  background: rgba(0,0,0, .2);
+  height: 50px;
+  font-size: 30px;
 }
